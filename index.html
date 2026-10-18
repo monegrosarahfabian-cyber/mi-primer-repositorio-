@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Ventas - Farmacia Saludable POS</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="main-header">
+        <h1>🏥 Sistema de Ventas de Farmacia (UASD POS)</h1>
+        <p>Punto de Venta con Validación Sanitaria y Gobernanza Transaccional</p>
+    </header>
+
+    <main class="container">
+        <!-- Catálogo de Medicamentos -->
+        <section class="card">
+            <h2>Catálogo de Medicamentos</h2>
+            <div class="search-box">
+                <input type="text" id="inputBuscar" placeholder="Buscar medicamento..." onkeyup="filtrarMedicamentos()">
+            </div>
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>Precio</th>
+                        <th>Stock</th>
+                        <th>Estado</th>
+                        <th>Acción</th>
+                    </tr>
+                </thead>
+                <tbody id="tablaMedicamentos"></tbody>
+            </table>
+        </section>
+
+        <!-- Carrito de Venta y Cobro -->
+        <section class="card">
+            <h2>Carrito de Venta</h2>
+            <div id="alertBox" class="alert hidden"></div>
+
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Producto</th>
+                        <th>Cant.</th>
+                        <th>Subtotal</th>
+                        <th>Quitar</th>
+                    </tr>
+                </thead>
+                <tbody id="tablaCarrito">
+                    <tr><td colspan="4" class="text-center">El carrito está vacío.</td></tr>
+                </tbody>
+            </table>
+
+            <div class="total-box">
+                <span>Total a Pagar:</span>
+                <strong id="totalPagar">$0.00</strong>
+            </div>
+
+            <!-- Registro de Receta Médica Obligatoria -->
+            <div id="seccionReceta" class="receta-box hidden">
+                <h3>📋 Registro de Receta Médica Obligatoria</h3>
+                <p class="small-text">Su carrito contiene medicamentos controlados que requieren receta.</p>
+                <input type="text" id="medicoNombre" placeholder="Nombre del Médico Prescriptor">
+                <input type="text" id="medicoCedula" placeholder="Cédula Profesional">
+                <input type="text" id="pacienteNombre" placeholder="Nombre del Paciente">
+            </div>
+
+            <button class="btn btn-primary btn-block" onclick="procesarVenta()">Completar Venta Transaccional</button>
+        </section>
+    </main>
+
+    <footer>
+        <p>Universidad Autónoma de Santo Domingo (UASD) — Proyecto Final Base de Datos I</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
